@@ -43,7 +43,11 @@ class Tuning {
 
 enum SazSize {
   uzunSap(0, 'Uzun Sap'),
-  // UNVERIFIED: sources disagree on the absolute pitch; the user can adjust it.
+  // A kisa sap (tambura-size) saz sounds a perfect fourth, 5 semitones, above
+  // the baglama. Verified 2026-11-21 against the MEB module (tambura "four
+  // steps above the baglama", Re Sol Do vs La Re Sol) and the Lokman Bas table
+  // (Baglama Duzeni Re Sol La vs La Re Mi). Makers differ a little, so the
+  // user can still adjust the offset in the app.
   kisaSap(5, 'Kısa Sap');
 
   const SazSize(this.defaultOffsetSemitones, this.label);

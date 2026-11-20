@@ -249,8 +249,10 @@ const _baglamaTunings = <Tuning>[
       TuningString(Note(55), 'Sol (G)'),
     ],
   ),
-  // UNVERIFIED: came from a secondary summary of the MEB document; confirm
-  // against the MEB source or remove.
+  // Abdal (also called Bozlak) is La La Sol. Verified 2026-11-21 against
+  // Kirsehir KTB "Bozlak nedir", Turkuler (Baglamanin Tarihi), the Lokman Bas
+  // tuning table ("Bozlak Duzeni La La Sol") and the MEB module table row
+  // "LA LA SOL".
   Tuning(
     id: 'baglama-abdal',
     name: 'Abdal',
