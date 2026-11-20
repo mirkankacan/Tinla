@@ -20,6 +20,23 @@ void main() {
     expect(inTuneThresholdCents, 5.0);
   });
 
+  group('MatchResult.isInTune', () {
+    test('exactly +-5 cents is in tune', () {
+      expect(const MatchResult(stringIndex: 0, cents: 5.0).isInTune, isTrue);
+      expect(const MatchResult(stringIndex: 0, cents: -5.0).isInTune, isTrue);
+    });
+    test('just beyond +-5 cents is not in tune', () {
+      expect(
+        const MatchResult(stringIndex: 0, cents: 5.0001).isInTune,
+        isFalse,
+      );
+      expect(
+        const MatchResult(stringIndex: 0, cents: -5.0001).isInTune,
+        isFalse,
+      );
+    });
+  });
+
   group('matchAuto guitar', () {
     test('110 Hz is string 1, 0 cents, in tune', () {
       final result = matchAuto(standard, 110.0);
@@ -96,10 +113,10 @@ void main() {
     test('392 Hz is string 2', () {
       expect(matchAuto(bozuk, 392).stringIndex, 2);
     });
-    test('330 Hz still maps to a nearest course within 600 cents', () {
+    test('330 Hz maps to string 1 (D) at about +202 cents', () {
       final result = matchAuto(bozuk, 330);
-      expect(result.stringIndex, inInclusiveRange(0, 2));
-      expect(result.cents.abs(), lessThanOrEqualTo(600));
+      expect(result.stringIndex, 1);
+      expect(result.cents, closeTo(201.96, 0.05));
     });
   });
 
@@ -119,6 +136,28 @@ void main() {
   });
 
   group('input validation', () {
+    test(
+      'matchAuto throws a clear ArgumentError on a tuning with no strings',
+      () {
+        const empty = Tuning(
+          id: 'empty',
+          name: 'Empty',
+          instrument: Instrument.guitar,
+          strings: [],
+        );
+        // RangeError is an ArgumentError subclass, so exclude it explicitly.
+        expect(
+          () => matchAuto(empty, 110),
+          throwsA(
+            isA<ArgumentError>().having(
+              (e) => e is RangeError,
+              'is RangeError',
+              isFalse,
+            ),
+          ),
+        );
+      },
+    );
     test('matchAuto throws on non-finite or non-positive frequency', () {
       for (final value in invalid) {
         expect(() => matchAuto(standard, value), throwsArgumentError);
