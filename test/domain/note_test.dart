@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:guitar_tuner/domain/entities/note.dart';
+import 'package:tinla/domain/entities/note.dart';
 
 void main() {
   group('Note.frequency', () {

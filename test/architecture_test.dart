@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
 
-const _package = 'guitar_tuner';
+const _package = 'tinla';
 
 /// One import/export directive found in a source file.
 typedef ImportEntry = ({String file, String target});
@@ -116,7 +116,7 @@ void main() {
         (file: 'domain/b.dart', target: '../data/x.dart'),
         (file: 'domain/c.dart', target: 'dart:math'),
         (file: 'domain/d.dart', target: 'entities/e.dart'),
-        (file: 'domain/e.dart', target: 'package:guitar_tuner/domain/f.dart'),
+        (file: 'domain/e.dart', target: 'package:tinla/domain/f.dart'),
       ]);
       expect(result, hasLength(2));
       expect(result.first, contains('lib/domain/a.dart'));
@@ -126,7 +126,7 @@ void main() {
       final result = findViolations([
         (
           file: 'presentation/screen.dart',
-          target: 'package:guitar_tuner/data/r.dart',
+          target: 'package:tinla/data/r.dart',
         ),
         (file: 'presentation/x/y.dart', target: '../../data/r.dart'),
         (file: 'presentation/providers.dart', target: '../data/r.dart'),
@@ -142,7 +142,7 @@ void main() {
       final result = findViolations([
         (file: 'data/r.dart', target: '../presentation/p.dart'),
         (file: 'data/ok.dart', target: 'package:record/record.dart'),
-        (file: 'main.dart', target: 'package:guitar_tuner/data/r.dart'),
+        (file: 'main.dart', target: 'package:tinla/data/r.dart'),
       ]);
       expect(result, hasLength(1));
       expect(result.first, contains('lib/data/r.dart'));

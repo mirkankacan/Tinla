@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:guitar_tuner/domain/entities/tuning.dart';
-import 'package:guitar_tuner/domain/tunings.dart';
+import 'package:tinla/domain/entities/tuning.dart';
+import 'package:tinla/domain/tunings.dart';
 
 Tuning _byName(Instrument instrument, String name) =>
     tuningsFor(instrument).singleWhere((t) => t.name == name);
