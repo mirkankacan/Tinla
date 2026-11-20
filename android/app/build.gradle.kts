@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.guitar_tuner"
+    namespace = "com.example.tinla"
     compileSdk = 37 // permission_handler_android requires API 37+
     ndkVersion = flutter.ndkVersion
 
@@ -16,7 +16,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "com.example.guitar_tuner"
+        applicationId = "com.example.tinla"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = 24 // required by record_android 2.3.0

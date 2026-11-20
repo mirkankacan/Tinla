@@ -1,4 +1,4 @@
-package com.example.guitar_tuner
+package com.example.tinla
 
 import io.flutter.embedding.android.FlutterActivity
 
