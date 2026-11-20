@@ -106,4 +106,12 @@ void main() {
       hasLength(2),
     );
   });
+
+  test('transposedBy returns an unmodifiable strings list', () {
+    final shifted = standardTuning.transposedBy(2);
+    expect(
+      () => shifted.strings.add(shifted.strings.first),
+      throwsUnsupportedError,
+    );
+  });
 }

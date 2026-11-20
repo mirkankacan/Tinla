@@ -21,6 +21,27 @@ void main() {
       expect(const Note(40).label, 'E2');
       expect(const Note(54).label, 'F#3');
     });
+    test('octave uses floor division for negative midi', () {
+      expect(const Note(0).octave, -1);
+      expect(const Note(-1).octave, -2);
+      expect(const Note(-1).name, 'B');
+    });
+  });
+
+  group('input validation', () {
+    final invalid = [0.0, -1.0, double.nan, double.infinity];
+    test('centsBetween throws ArgumentError on bad frequency or target', () {
+      for (final value in invalid) {
+        expect(() => centsBetween(value, 440), throwsArgumentError);
+        expect(() => centsBetween(440, value), throwsArgumentError);
+      }
+    });
+    test('centsFolded throws ArgumentError on bad frequency or target', () {
+      for (final value in invalid) {
+        expect(() => centsFolded(value, 440), throwsArgumentError);
+        expect(() => centsFolded(440, value), throwsArgumentError);
+      }
+    });
   });
 
   group('centsBetween', () {

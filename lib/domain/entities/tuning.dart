@@ -34,10 +34,10 @@ class Tuning {
     name: name,
     instrument: instrument,
     isFree: isFree,
-    strings: [
+    strings: List.unmodifiable([
       for (final string in strings)
         TuningString(Note(string.note.midi + semitones), string.label),
-    ],
+    ]),
   );
 }
 

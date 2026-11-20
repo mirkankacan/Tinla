@@ -25,7 +25,7 @@ class Note {
   String get name => _noteNames[midi % 12];
 
   /// Scientific pitch octave (MIDI 60 is C4).
-  int get octave => midi ~/ 12 - 1;
+  int get octave => (midi / 12).floor() - 1;
 
   double get frequency => 440 * pow(2, (midi - 69) / 12).toDouble();
 
@@ -33,11 +33,24 @@ class Note {
 }
 
 /// Signed distance from [target] to [frequency] in cents.
-double centsBetween(double frequency, double target) =>
-    1200 * log(frequency / target) / ln2;
+///
+/// [frequency] and [target] must be finite and > 0, else [ArgumentError].
+double centsBetween(double frequency, double target) {
+  _checkPositiveFinite(frequency, 'frequency');
+  _checkPositiveFinite(target, 'target');
+  return 1200 * log(frequency / target) / ln2;
+}
 
 /// Like [centsBetween] but octave-folded into [-600, 600).
+///
+/// [frequency] and [target] must be finite and > 0, else [ArgumentError].
 double centsFolded(double frequency, double target) {
   final cents = centsBetween(frequency, target);
   return cents - 1200 * ((cents + 600) / 1200).floor();
+}
+
+void _checkPositiveFinite(double value, String name) {
+  if (!value.isFinite || value <= 0) {
+    throw ArgumentError.value(value, name, 'must be finite and > 0');
+  }
 }
