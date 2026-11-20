@@ -5,3 +5,33 @@
 .impeccable/config.local.json
 build/
 .dart_tool/
+
+# Flutter / Dart
+.DS_Store
+.atom/
+.buildlog/
+.history
+.svn/
+migrate_working_dir/
+*.iml
+*.ipr
+*.iws
+.idea/
+.pub-cache/
+.pub/
+.flutter-plugins
+.flutter-plugins-dependencies
+/coverage/
+
+# Android
+android/.gradle/
+android/captures/
+android/local.properties
+android/gradle-wrapper.jar
+android/app/debug
+android/app/profile
+android/app/release
+**/*.keystore
+**/*.jks
+key.properties
+GeneratedPluginRegistrant.*
