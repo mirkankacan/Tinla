@@ -19,7 +19,8 @@ void main() {
     final tracker = StringDoneTracker();
     _feed(tracker, 1, 2, 12);
     tracker.update(stringIndex: 1, cents: 6);
-    _feed(tracker, 1, 2, 12);
+    _feed(tracker, 1, 2, 11);
+    expect(tracker.update(stringIndex: 1, cents: 2), isEmpty);
     expect(tracker.update(stringIndex: 1, cents: 2), {1});
   });
 
