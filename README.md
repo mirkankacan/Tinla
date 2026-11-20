@@ -10,7 +10,7 @@ Gitar ve bağlama için Android akort uygulaması.
 Tınla listens through the microphone, works out which string you played and shows how many cents sharp or flat it is.
 
 - Guitar: 11 tunings (Standard, Drop D, DADGAD, open tunings, ...).
-- Bağlama: 10 düzen (Bozuk, Bağlama Düzeni, Misket, Müstezat, ...), long-neck and short-neck (uzun sap / kısa sap).
+- Bağlama: 10 tunings (called *düzen* in Turkish: Bozuk, Bağlama Düzeni, Misket, Müstezat, ...), for long-neck and short-neck instruments.
 - Automatic string detection, with a manual lock by tapping a tuning peg.
 - Planned: a free tier and a one-time Pro purchase.
 
@@ -27,7 +27,7 @@ flutter test
 flutter build apk --debug
 ```
 
-The bağlama düzen notes come from Karahan & Doğan, *Online Journal of Music Sciences* 2025, 10(3), 678–702. Entries that are not yet verified against their source are marked `UNVERIFIED` in the code.
+The bağlama tuning notes come from Karahan & Doğan, *Online Journal of Music Sciences* 2025, 10(3), 678–702. Entries that are not yet verified against their source are marked `UNVERIFIED` in the code.
 
 Design references live in `docs/design/`.
 
