@@ -95,6 +95,10 @@ void main() {
   List<String> forLayer(String layer) =>
       findViolations(entries.where((e) => e.file.startsWith('$layer/')));
 
+  test('scan finds source files, including domain', () {
+    expect(entries, isNotEmpty);
+    expect(entries.any((e) => e.file.startsWith('domain/')), isTrue);
+  });
   test('domain imports only dart:* and domain', () {
     expect(forLayer('domain'), isEmpty);
   });
